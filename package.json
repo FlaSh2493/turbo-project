@@ -1,0 +1,27 @@
+{
+  "name": "turbo-project",
+  "version": "1.0.0",
+  "description": "Turbo Project - Monorepo with Turborepo",
+  "type": "module",
+  "packageManager": "pnpm@10.24.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "clean": "turbo clean",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+  },
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "prettier": "^3.7.4",
+    "turbo": "^2.7.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
