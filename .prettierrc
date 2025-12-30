@@ -1,3 +1,0 @@
-{
-  "extends": ["@turbo-project/prettier-config"]
-}
