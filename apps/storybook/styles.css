@@ -1,0 +1,2 @@
+/* UI 패키지의 빌드된 스타일 (모든 스타일 포함) */
+@import "../../packages/ui/dist/styles/index.css";

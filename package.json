@@ -14,12 +14,18 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "clean": "turbo clean",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "storybook": "turbo storybook",
+    "build-storybook": "turbo build-storybook"
   },
   "devDependencies": {
     "eslint": "^9.39.2",
     "prettier": "^3.7.4",
-    "turbo": "^2.7.2"
+    "turbo": "^2.7.2",
+    "@turbo-project/eslint-config": "workspace:*",
+    "@turbo-project/tsconfig": "workspace:*",
+    "@turbo-project/prettier-config": "workspace:*",
+    "typescript": "^5.9.3"
   },
   "engines": {
     "node": ">=18"
