@@ -3,4 +3,4 @@ dist
 build
 storybook-static
 stats.html
-pnpm-lock.yaml
+.turbo

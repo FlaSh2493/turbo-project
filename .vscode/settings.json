@@ -13,6 +13,11 @@
   "eslint.workingDirectories": [{ "pattern": "apps/*" }, { "pattern": "packages/*" }],
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
 
+  // CSS - Tailwind 지시어 인식
+  "css.validate": false,
+  "scss.validate": false,
+  "css.lint.unknownAtRules": "ignore",
+
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

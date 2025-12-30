@@ -1,13 +1,16 @@
 {
   "name": "@turbo-project/prettier-config",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Prettier configuration for turbo-project",
+  "main": ".prettierrc.json",
+  "exports": {
+    ".": "./prettier.config.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.24.0"
+  "packageManager": "pnpm@10.24.0",
+  "peerDependencies": {
+    "prettier": ">=3.0.0"
+  }
 }
