@@ -2,20 +2,74 @@
   "name": "@turbo-project/ui",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./headless": {
+      "import": {
+        "types": "./dist/headless/index.d.ts",
+        "default": "./dist/headless/index.mjs"
+      },
+      "require": {
+        "types": "./dist/headless/index.d.cts",
+        "default": "./dist/headless/index.cjs"
+      }
+    },
+    "./styles/*": "./dist/styles/*"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.24.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsup && pnpm build:css",
+    "build:css": "cat src/styles/base.css src/styles/global.css $(find src/styles -name '*.css' ! -name 'base.css' ! -name 'global.css' | sort) > .tmp.css && tailwindcss -i .tmp.css -o dist/styles/index.css --minify && rm .tmp.css",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint ./eslint.config.js"
+  },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.4",
+    "@radix-ui/react-switch": "^1.2.6",
+    "@tailwindcss/cli": "^4.1.18",
     "@types/react": "^18.3.27",
-    "react": "^18.3.1"
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.562.0",
+    "react": "^18.3.1",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.18",
+    "tw-animate-css": "^1.4.0"
   },
   "devDependencies": {
-    "@turbo-project/eslint-config": "workspace:*",
-    "@turbo-project/tsconfig": "workspace:*"
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": false
+    },
+    "react-dom": {
+      "optional": false
+    }
   }
 }

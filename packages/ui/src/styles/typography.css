@@ -1,0 +1,78 @@
+/**
+ * XDS Typography System
+ * 전용 서체: Pretendard
+ *
+ * Tailwind 기본 사이즈 매핑:
+ * - text-4xl (2.25rem/36px) → heading0
+ * - text-2xl (1.5rem/24px)  → heading1
+ * - text-xl (1.25rem/20px)  → heading2
+ * - text-lg (1.125rem/18px) → title1
+ * - text-base (1rem/16px)   → title2, body1
+ * - text-sm (0.875rem/14px) → title3, body2
+ * - text-xs (0.75rem/12px)  → title4, body3, caption1
+ */
+
+@theme {
+  /* ========================================
+   * Font Family
+   * → 사용: font-pretendard
+   * ======================================== */
+  --font-pretendard:
+    "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+
+  /* ========================================
+   * Custom Font Size (Tailwind에 없는 것만)
+   * ======================================== */
+  --text-xxs: 0.625rem; /* 10px - Tailwind에 없음 */
+}
+
+/* ========================================
+ * Typography Utility Classes
+ * → 사용: class="heading0", class="body1" 등
+ * ======================================== */
+@layer components {
+  /* Headings - Bold */
+  .heading0 {
+    @apply font-pretendard text-4xl font-bold leading-[1.44]; /* 36px / 52px */
+  }
+  .heading1 {
+    @apply font-pretendard text-2xl font-bold leading-[1.5]; /* 24px / 36px */
+  }
+  .heading2 {
+    @apply font-pretendard text-xl font-bold leading-[1.4]; /* 20px / 28px */
+  }
+
+  /* Titles - Bold */
+  .title1 {
+    @apply font-pretendard text-lg font-bold leading-[1.44]; /* 18px / 26px */
+  }
+  .title2 {
+    @apply font-pretendard text-base font-bold leading-[1.625]; /* 16px / 26px */
+  }
+  .title3 {
+    @apply font-pretendard text-sm font-bold leading-[1.71]; /* 14px / 24px */
+  }
+  .title4 {
+    @apply font-pretendard text-xs font-bold leading-[1.33]; /* 12px / 16px */
+  }
+
+  /* Bodies - Medium */
+  .body1 {
+    @apply font-pretendard text-base font-medium leading-[1.625]; /* 16px / 26px */
+  }
+  .body2 {
+    @apply font-pretendard text-sm font-medium leading-[1.71]; /* 14px / 24px */
+  }
+  .body3 {
+    @apply font-pretendard text-xs font-medium leading-[1.33]; /* 12px / 16px */
+  }
+
+  /* Captions */
+  .caption1 {
+    @apply font-pretendard text-xs font-medium leading-[1.33]; /* 12px / 16px */
+  }
+  .caption2 {
+    @apply font-pretendard text-xxs font-bold leading-[1.6]; /* 10px / 16px */
+  }
+}

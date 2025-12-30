@@ -1,0 +1,95 @@
+/**
+ * XDS Color System
+ * LEVER Xpert 브랜드 컬러 시스템
+ * 주의: 딤처리 외 투명도 활용 불가
+ */
+
+:root {
+  /* ========================================
+   * Primary Colors (브랜드 컬러)
+   * ======================================== */
+  --color-primary-400: #1a1f3f; /* 브랜드 컬러 */
+  --color-primary-300: #556af9; /* 브랜드 활성화 컬러 */
+  --color-primary-200: #8896ff; /* 라인 컬러 */
+  --color-primary-100: #fafaff; /* 배경 컬러 */
+
+  /* ========================================
+   * Gray Colors (중요도: 800 높음 → 0 낮음)
+   * ======================================== */
+  --color-gray-800: #222222; /* 기본 컬러 */
+  --color-gray-700: #3d3d3d; /* 기본 텍스트 컬러 */
+  --color-gray-600: #777777;
+  --color-gray-500: #888888;
+  --color-gray-400: #bbbbbb; /* 비활성화 컬러 */
+  --color-gray-300: #dddddd;
+  --color-gray-200: #eeeeee; /* 라인 컬러 */
+  --color-gray-100: #f8f8f8; /* 배경 컬러 */
+  --color-gray-0: #ffffff;
+
+  /* ========================================
+   * Subcolors (의미 기반 컬러)
+   * ======================================== */
+  --color-red: #c00000; /* 부정, 경고 */
+  --color-yellow: #f8b300; /* 주의 */
+  --color-green: #00a000; /* 성공 */
+  --color-blue: #579aff; /* 긍정 */
+  --color-darkblue: #3e70bb; /* 링크 텍스트 */
+  --color-lightyellow: #fff8e6;
+
+  /* ========================================
+   * Graph Colors (badge, chart, graph용)
+   * 순서: 01 → 20
+   * ======================================== */
+  --color-graph-01: #99d75e;
+  --color-graph-02: #a78cf1;
+  --color-graph-03: #f18b5f;
+  --color-graph-04: #97dce8;
+  --color-graph-05: #5ab5ab;
+  --color-graph-06: #727dbf;
+  --color-graph-07: #4fadf7;
+  --color-graph-08: #e694b0;
+  --color-graph-09: #ffca63;
+  --color-graph-10: #4f7499;
+  --color-graph-11: #b9aba4;
+  --color-graph-12: #87c660;
+  --color-graph-13: #c596cc;
+  --color-graph-14: #ffb7a1;
+  --color-graph-15: #a9b1df;
+  --color-graph-16: #ef7876;
+  --color-graph-17: #6a9fbd;
+  --color-graph-18: #b88672;
+  --color-graph-19: #acb9c9;
+  --color-graph-20: #919f88;
+
+  /* ========================================
+   * Hover & Selected (오버레이용)
+   * ======================================== */
+  --color-hover: rgba(0, 0, 0, 0.03); /* Hover 시 overlay */
+  --color-selected: rgba(85, 106, 249, 0.05); /* 선택된 list BG overlay */
+
+  /* ========================================
+   * Dimmed (딤 처리)
+   * ======================================== */
+  --color-dimmed-black: rgba(0, 0, 0, 0.3); /* 모달 딤 처리 */
+  --color-dimmed-white: rgba(255, 255, 255, 0.3); /* 스피너 딤 처리 */
+
+  /* ========================================
+   * White Opacity (LNB 내 활용)
+   * ======================================== */
+  --color-white-050: rgba(255, 255, 255, 0.5);
+  --color-white-005: rgba(255, 255, 255, 0.05);
+
+  /* ========================================
+   * Black Opacity (LNB 내 활용)
+   * ======================================== */
+  --color-black-015: rgba(0, 0, 0, 0.15);
+
+  /* ========================================
+   * Gradation
+   * ======================================== */
+  --gradient-lnb: linear-gradient(
+    180deg,
+    #18478d 0%,
+    #0a2c62 100%
+  ); /* LNB BG 활용 */
+}
