@@ -5,7 +5,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["node"]
   },
-  "exclude": ["node_modules", "build", "dist", "src/global.d.ts"]
+  "include": ["."],
+  "exclude": ["node_modules", "dist", ".turbo"]
 }

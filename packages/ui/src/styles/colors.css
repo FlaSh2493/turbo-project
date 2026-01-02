@@ -4,7 +4,7 @@
  * 주의: 딤처리 외 투명도 활용 불가
  */
 
-:root {
+@theme {
   /* ========================================
    * Primary Colors (브랜드 컬러)
    * ======================================== */
@@ -12,6 +12,9 @@
   --color-primary-300: #556af9; /* 브랜드 활성화 컬러 */
   --color-primary-200: #8896ff; /* 라인 컬러 */
   --color-primary-100: #fafaff; /* 배경 컬러 */
+
+  /* Primary State Colors */
+  --color-primary-400-hover: color-mix(in srgb, var(--color-primary-400), white 10%);
 
   /* ========================================
    * Gray Colors (중요도: 800 높음 → 0 낮음)
