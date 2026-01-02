@@ -1,7 +1,7 @@
 {
-  "name": "turbo-project",
+  "name": "@turbo-project/front-core",
   "version": "1.0.0",
-  "description": "Turbo Project - Monorepo with Turborepo",
+  "description": "Madup Inc - Front Core Monorepo",
   "type": "module",
   "packageManager": "pnpm@10.24.0",
   "private": true,
@@ -15,11 +15,15 @@
     "lint": "turbo lint",
     "clean": "turbo clean",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "check-types": "tsc --build --noEmit",
     "storybook": "turbo storybook",
-    "build-storybook": "turbo build-storybook"
+    "build-storybook": "turbo build-storybook",
+    "prepare": "husky"
   },
   "devDependencies": {
     "eslint": "^9.39.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
     "prettier": "^3.7.4",
     "turbo": "^2.7.2",
     "@turbo-project/eslint-config": "workspace:*",
