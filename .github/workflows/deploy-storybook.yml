@@ -48,7 +48,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build UI package
-        run: pnpm --filter @madup-inc/front-core-design build
+        run: pnpm --filter @turbo-project/front-core-design build
 
       - name: Build Storybook
         run: pnpm --filter storybook build-storybook

@@ -1,7 +1,7 @@
 {
   "name": "@turbo-project/front-core",
   "version": "1.0.0",
-  "description": "Madup Inc - Front Core Monorepo",
+  "description": "Front Core Monorepo",
   "type": "module",
   "packageManager": "pnpm@10.24.0",
   "private": true,

@@ -1,6 +1,6 @@
 /**
  * XDS Color System
- * LEVER Xpert 브랜드 컬러 시스템
+ * 브랜드 컬러 시스템
  * 주의: 딤처리 외 투명도 활용 불가
  */
 
@@ -90,9 +90,5 @@
   /* ========================================
    * Gradation
    * ======================================== */
-  --gradient-lnb: linear-gradient(
-    180deg,
-    #18478d 0%,
-    #0a2c62 100%
-  ); /* LNB BG 활용 */
+  --gradient-lnb: linear-gradient(180deg, #18478d 0%, #0a2c62 100%); /* LNB BG 활용 */
 }
