@@ -1,7 +1,7 @@
 {
   "name": "@turbo-project/prettier-config",
   "version": "1.0.0",
-  "description": "Prettier configuration for turbo-project",
+  "description": "Prettier configuration for madup-inc",
   "main": ".prettierrc.json",
   "exports": {
     ".": "./prettier.config.js"

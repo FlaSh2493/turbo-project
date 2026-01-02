@@ -1,8 +1,0 @@
-.husky
-node_modules
-.eslintignore
-.prettierignore
-dist
-storybook-static
-stats.html
-pnpm-lock.yaml
