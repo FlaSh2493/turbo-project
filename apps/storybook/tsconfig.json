@@ -1,3 +1,4 @@
 {
-  "extends": ["@turbo-project/tsconfig/tsconfig.base.json"]
+  "extends": ["@turbo-project/tsconfig/tsconfig.base.json"],
+  "include": ["stories", "*.ts"]
 }

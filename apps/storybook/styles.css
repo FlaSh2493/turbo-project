@@ -1,2 +1,8 @@
-/* UI 패키지의 빌드된 스타일 (모든 스타일 포함) */
-@import "../../packages/ui/dist/styles/index.css";
+/* UI 패키지의 모든 스타일 포함 (Tailwind + 테마 변수 + 타이포그래피) */
+@import '@turbo-project/front-core-design/styles';
+
+/* 스토리 파일들에서 사용하는 Tailwind 클래스를 스캔하도록 소스 추가 */
+@source "./stories/**/*.{ts,tsx}";
+
+/* UI 패키지 소스 스캔 - node_modules 심볼릭 링크 경로 */
+@source "./node_modules/@turbo-project/front-core-design/src/**/*.{ts,tsx}";
