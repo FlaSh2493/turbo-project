@@ -1,6 +1,15 @@
 node_modules
 dist
-build
 storybook-static
-stats.html
 .turbo
+.next
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.development
+.env.test
+.env.production
+
+tsconfig.tsbuildinfo
