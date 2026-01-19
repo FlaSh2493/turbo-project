@@ -1,0 +1,27 @@
+/* ScrollArea Root */
+.scroll-area-root {
+  @apply relative overflow-hidden;
+}
+
+/* ScrollArea Viewport */
+.scroll-area-viewport {
+  @apply h-full w-full rounded-[inherit];
+}
+
+/* ScrollBar */
+.scroll-bar-base {
+  @apply flex touch-none select-none transition-colors transition-opacity;
+}
+
+.scroll-bar-vertical {
+  @apply h-full w-(--scrollbar-track-size) pr-(--scrollbar-offset) py-(--scrollbar-offset);
+}
+
+.scroll-bar-horizontal {
+  @apply flex-col h-(--scrollbar-track-size) pb-(--scrollbar-offset) px-(--scrollbar-offset);
+}
+
+/* ScrollThumb */
+.scroll-thumb {
+  @apply relative flex-1 rounded-full bg-gray-300;
+}
