@@ -1,0 +1,92 @@
+.btn-base {
+  @apply inline-flex
+    items-center
+    justify-center
+    gap-2
+    whitespace-nowrap
+    rounded-[5px]
+    transition-all
+    disabled:pointer-events-none
+    shrink-0
+    [&_svg]:shrink-0
+    outline-none
+    focus-visible:ring-2
+    focus-visible:ring-primary-300
+    focus-visible:ring-offset-2;
+}
+
+/* Variants */
+.btn-default {
+  @apply bg-primary-400
+    text-gray-0
+    hover:bg-primary-400-hover
+    active:bg-primary-400
+    disabled:bg-gray-400;
+}
+.btn-outline {
+  @apply border
+    border-primary-300
+    bg-gray-0
+    text-primary-300
+    hover:bg-hover
+    active:bg-selected
+    disabled:border-gray-300
+    disabled:text-gray-400;
+}
+.btn-secondary {
+  @apply border
+    border-gray-300
+    bg-white
+    text-gray-700
+    hover:bg-hover
+    active:border-primary-300
+    active:bg-selected
+    active:text-primary-300
+    disabled:border-gray-300
+    disabled:text-gray-400;
+}
+.btn-ghost {
+  @apply bg-transparent
+    text-gray-700
+    hover:bg-hover
+    active:bg-selected
+    active:text-primary-300
+    disabled:text-gray-400;
+}
+.btn-link {
+  @apply text-primary-300
+    underline-offset-4
+    hover:underline;
+}
+
+/* Sizes */
+.btn-lg {
+  @apply h-[44px]
+    px-[20px]
+    gap-[8px]
+    min-w-[84px]
+    title3;
+}
+.btn-md {
+  @apply h-[34px]
+    px-[14px]
+    gap-[8px]
+    min-w-[64px]
+    title3;
+}
+.btn-sm {
+  @apply h-[24px]
+    px-[8px]
+    gap-[4px]
+    min-w-[44px]
+    title4;
+}
+.btn-icon {
+  @apply size-[34px];
+}
+.btn-icon-sm {
+  @apply size-[24px];
+}
+.btn-icon-lg {
+  @apply size-[44px];
+}
