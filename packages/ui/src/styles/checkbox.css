@@ -1,0 +1,174 @@
+/* ============================================
+ * Checkbox Root
+ * ============================================ */
+
+/* Base */
+.checkbox-root-base {
+  @apply flex items-center gap-2;
+}
+
+/* Mode: squared */
+.checkbox-root-squared {
+  @apply w-full justify-between px-[14px] py-[10px] rounded-[5px] border transition-colors;
+}
+
+/* State: disabled false */
+.checkbox-root-enabled {
+  @apply cursor-pointer;
+}
+
+/* Compound: squared + checked + enabled */
+.checkbox-root-squared-checked {
+  @apply border-primary-300;
+}
+
+/* Compound: squared + unchecked + enabled */
+.checkbox-root-squared-unchecked {
+  @apply bg-gray-0 border-gray-300;
+}
+
+/* Compound: squared + checked + disabled */
+.checkbox-root-squared-checked-disabled {
+  @apply bg-gray-100 border-primary-300 cursor-not-allowed;
+}
+
+/* Compound: squared + unchecked + disabled */
+.checkbox-root-squared-unchecked-disabled {
+  @apply bg-gray-100 border-gray-300 cursor-not-allowed;
+}
+
+/* ============================================
+ * Checkbox (The actual checkbox input)
+ * ============================================ */
+
+/* Base */
+.checkbox-base {
+  @apply shrink-0 size-4 rounded-[2px] border transition-colors duration-200;
+}
+
+/* State: checked */
+.checkbox-checked {
+  @apply bg-primary-300 border-primary-300;
+}
+
+/* State: unchecked */
+.checkbox-unchecked {
+  @apply bg-white border-gray-500;
+}
+
+/* State: indeterminate */
+.checkbox-indeterminate {
+  @apply bg-white border-gray-500;
+}
+
+/* State: disabled */
+.checkbox-disabled {
+  @apply cursor-not-allowed;
+}
+
+/* Compound: default + unchecked + disabled */
+.checkbox-unchecked-disabled {
+  @apply bg-gray-0 border-gray-400;
+}
+
+/* Compound: default + checked + disabled */
+.checkbox-checked-disabled {
+  @apply bg-gray-400 border-gray-400;
+}
+
+/* Compound: default + indeterminate + disabled */
+.checkbox-indeterminate-disabled {
+  @apply bg-gray-0 border-gray-400;
+}
+
+/* Compound: squared + checked + enabled */
+.checkbox-squared-checked {
+  @apply border-primary-300;
+}
+
+/* Compound: squared + checked + disabled */
+.checkbox-squared-checked-disabled {
+  @apply bg-gray-100 border-primary-300;
+}
+
+/* ============================================
+ * Checkbox Indicator
+ * ============================================ */
+
+.checkbox-indicator {
+  @apply flex items-center justify-center text-current size-3.5;
+}
+
+/* ============================================
+ * Checkbox Indeterminate Indicator
+ * ============================================ */
+
+.checkbox-indeterminate-indicator {
+  @apply h-2 w-2 rounded-[2px];
+}
+
+.checkbox-indeterminate-indicator-enabled {
+  @apply bg-primary-300;
+}
+
+.checkbox-indeterminate-indicator-disabled {
+  @apply bg-gray-400;
+}
+
+/* ============================================
+ * Checkbox Label
+ * ============================================ */
+
+/* Base */
+.checkbox-label {
+  @apply body2 text-gray-700 select-none w-full;
+}
+
+/* State: disabled */
+.checkbox-label-disabled {
+  @apply cursor-not-allowed;
+}
+
+/* State: enabled */
+.checkbox-label-enabled {
+  @apply cursor-pointer;
+}
+
+/* Compound: squared + checked + enabled */
+.checkbox-label-squared-checked {
+  @apply text-primary-300;
+}
+
+/* Compound: squared + checked + disabled */
+.checkbox-label-squared-checked-disabled {
+  @apply text-primary-300;
+}
+
+/* ============================================
+ * Checkbox Check Icon (for squared mode)
+ * ============================================ */
+
+/* Base */
+.checkbox-check-icon {
+  @apply shrink-0 size-6;
+}
+
+/* State: disabled */
+.checkbox-check-icon-disabled {
+  @apply text-gray-400;
+}
+
+/* Compound: squared + checked + enabled */
+.checkbox-check-icon-squared-checked {
+  @apply text-primary-300;
+}
+
+/* Compound: squared + unchecked + enabled */
+.checkbox-check-icon-squared-unchecked {
+  @apply text-gray-400;
+}
+
+/* Compound: squared + checked + disabled */
+.checkbox-check-icon-squared-checked-disabled {
+  @apply text-primary-300;
+}
