@@ -13,3 +13,4 @@ storybook-static
 .env.production
 
 tsconfig.tsbuildinfo
+coverage

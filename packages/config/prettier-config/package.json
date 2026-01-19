@@ -1,7 +1,7 @@
 {
   "name": "@turbo-project/prettier-config",
   "version": "1.0.0",
-  "description": "Prettier configuration",
+  "description": "Prettier configuration for tubob-project",
   "main": ".prettierrc.json",
   "exports": {
     ".": "./prettier.config.js"

@@ -1,0 +1,415 @@
+# UI Architecture Pattern - Atomic Design + Headless
+
+## 개요
+
+이 프로젝트는 **Atomic Design Pattern**과 **Radix 스타일 UI 파편화**, 그리고 **Headless 패턴**을 결합하여 UI 컴포넌트를 구성합니다.
+
+---
+
+## 디렉토리 구조
+
+```
+packages/ui/src/
+├── primitives/      # 순수 UI 컴포넌트 (스타일링만, 로직 없음)
+├── headless/        # 비즈니스 로직 및 상태 관리 (UI 없음)
+├── components/      # Primitives + Headless 조합된 완성 컴포넌트
+├── icons/           # 아이콘 컴포넌트
+├── lib/             # 유틸리티 함수
+└── styles/          # 글로벌 스타일, 색상, 타이포그래피
+```
+
+---
+
+## 핵심 원칙
+
+### 0. 컴포넌트 주석 형식
+
+컴포넌트를 나타내는 주석은 아래와 같습니다.
+
+// ============================================
+// Item (개별 세그먼트)
+// ============================================
+
+
+### 1. Atomic Design Pattern
+
+컴포넌트는 다음 계층으로 구성됩니다:
+
+| 레벨          | 설명                               | 예시                               |
+| ------------- | ---------------------------------- | ---------------------------------- |
+| **Atoms**     | 가장 작은 단위의 UI 요소           | Button, Input, Label, Icon         |
+| **Molecules** | Atoms의 조합                       | InputField (Label + Input + Error) |
+| **Organisms** | Molecules의 조합, 독립적 기능 단위 | Form, Card, Navigation             |
+| **Templates** | 페이지 레이아웃 구조               | DashboardLayout                    |
+| **Pages**     | 실제 콘텐츠가 채워진 템플릿        | HomePage                           |
+
+### 2. Radix 스타일 UI 파편화
+
+복잡한 컴포넌트는 작은 서브 컴포넌트로 분리하여 **조합 가능하게** 구성합니다.
+
+```tsx
+// ❌ 단일 컴포넌트 (유연성 부족)
+<Dialog title="제목" content="내용" onConfirm={handleConfirm} />
+
+// ✅ 파편화된 컴포넌트 (유연하고 조합 가능)
+<Dialog.Root>
+  <Dialog.Trigger>
+    <Button>열기</Button>
+  </Dialog.Trigger>
+  <Dialog.Portal>
+    <Dialog.Overlay />
+    <Dialog.Content>
+      <Dialog.Title>제목</Dialog.Title>
+      <Dialog.Description>설명</Dialog.Description>
+      <Dialog.Close />
+    </Dialog.Content>
+  </Dialog.Portal>
+</Dialog.Root>
+```
+
+### 3. Headless 패턴 분리
+
+UI와 로직을 완전히 분리합니다.
+
+| 영역           | 위치              | 역할      | 특징                                          |
+| -------------- | ----------------- | --------- | --------------------------------------------- |
+| **Primitives** | `src/primitives/` | 순수 UI   | 스타일만, 로직 없음 , ref 주입                |
+| **Headless**   | `src/headless/`   | 로직/상태 | UI 없음, 훅 또는 렌더리스 컴포넌트 , ref 주입 |
+| **Components** | `src/components/` | 조합      | Primitives + Headless 결합 , ref 주입         |
+
+```tsx
+// headless/useDialog.ts - 로직만
+export const useDialog = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const open = () => setIsOpen(true)
+  const close = () => setIsOpen(false)
+  const toggle = () => setIsOpen(prev => !prev)
+
+  return { isOpen, open, close, toggle }
+}
+
+// primitives/dialog.tsx - UI만
+export const DialogOverlay = ({ className, ...props }) => (
+  <div className={cn('fixed inset-0 bg-black/50', className)} {...props} />
+)
+
+export const DialogContent = ({ className, children, ...props }) => (
+  <div className={cn('fixed left-1/2 top-1/2 ...', className)} {...props}>
+    {children}
+  </div>
+)
+
+// components/Dialog.tsx - 조합
+export const Dialog = ({ trigger, children }) => {
+  const { isOpen, open, close } = useDialog()
+
+  return (
+    <>
+      <span onClick={open}>{trigger}</span>
+      {isOpen && (
+        <DialogOverlay onClick={close}>
+          <DialogContent>{children}</DialogContent>
+        </DialogOverlay>
+      )}
+    </>
+  )
+}
+```
+
+---
+
+## 파편화 기준
+
+**모든 컴포넌트를 파편화할 필요는 없습니다.** 다음 조건에 해당하는 경우에만 파편화합니다:
+
+### ✅ 파편화가 필요한 경우
+
+- 여러 방식으로 조합해서 사용해야 하는 컴포넌트
+- 내부 구조를 커스터마이징해야 하는 컴포넌트
+- 상태 관리가 복잡한 컴포넌트
+
+**예시**: Dialog, Dropdown, Tabs, Accordion, Menu, Popover, Tooltip, Select
+
+### ❌ 파편화가 불필요한 경우
+
+- 단순한 Atomic 컴포넌트
+- 조합 방식이 고정된 컴포넌트
+- 내부 구조 변경이 필요 없는 컴포넌트
+
+**예시**: Button, Input, Label, Badge, Avatar, Spinner
+
+---
+
+## 네이밍 컨벤션
+
+### Headless 훅 네이밍 규칙
+
+Headless 훅의 이름은 **`use-[primitive component name]`** 형식으로 작성합니다.
+
+| Primitive 컴포넌트    | Headless 훅 파일명       | 훅 함수명           |
+| --------------------- | ------------------------ | ------------------- |
+| `dialog.tsx`          | `use-dialog.ts`          | `useDialog`         |
+| `dropdown.tsx`        | `use-dropdown.ts`        | `useDropdown`       |
+| `segment-control.tsx` | `use-segment-control.ts` | `useSegmentControl` |
+| `tabs.tsx`            | `use-tabs.ts`            | `useTabs`           |
+
+```
+# Primitives (순수 UI) 스타일을 token화 하지 않음
+primitives/
+├── button/
+│   ├── button.tsx
+│   ├── button.css.ts
+│   └── index.ts  # DialogRoot, DialogTrigger, DialogContent, ...
+├── dialog/
+│   ├── dialog.tsx
+│   ├── dialog.css.ts
+│   └── index.ts
+├── dropdown/
+│   ├── dropdown.tsx
+│   ├── dropdown.css.ts
+│   └── index.ts
+└── index.ts
+
+# Headless (로직) - use-[primitive name].ts 형식
+headless/
+├── use-dialog.ts
+├── use-dropdown.ts
+└── index.ts
+
+# Components (조합) 스타일을 token화 함, controlled, uncontrolled 방식을 구현한다
+components/
+├── dialog/
+│   ├── dialog.tsx
+│   ├── dialog.css.ts
+│   └── index.ts
+├── dropdown/
+│   ├── dropdown.tsx
+│   ├── dropdown.css.ts
+│   └── index.ts
+└── index.ts
+```
+
+---
+
+import { useDialog } from '@turbo-project/ui/headless'
+import { DialogOverlay, DialogContent } from '@turbo-project/ui/primitives'
+
+function CustomDialog() {
+  const { isOpen, open, close } = useDialog()
+
+  return (
+    <>
+      <button onClick={open}>Open</button>
+      {isOpen && (
+        <DialogOverlay onClick={close}>
+          <DialogContent>{/* 커스텀 내용 */}</DialogContent>
+        </DialogOverlay>
+      )}
+    </>
+  )
+}
+```
+
+### 미리 조합된 컴포넌트 사용 (Components)
+
+```tsx
+import { Dialog } from '@turbo-project/ui/components'
+
+function Page() {
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger>
+        <button>Open</button>
+      </Dialog.Trigger>
+      <Dialog.Content>
+        <Dialog.Title>제목</Dialog.Title>
+        <p>내용</p>
+      </Dialog.Content>
+    </Dialog.Root>
+  )
+}
+```
+
+---
+
+## 테스트 코드 규칙
+
+### 테스트 파일 위치 및 네이밍
+
+테스트 파일은 **해당 컴포넌트와 동일한 디렉토리**에 위치하며, `[component-name].test.ts(x)` 형식으로 작성합니다.
+
+```
+primitives/
+├── button/
+│   ├── __test__
+│   │   ├── button.test.tsx    # 컴포넌트 테스트
+│   │   └── index.ts
+│   ├── button.tsx
+│   └── index.ts
+
+headless/
+├── use-segment-control/
+│   ├── __test__
+│   │   ├── use-segment-control.test.ts   # 훅 테스트 (.ts)
+│   │   └── index.ts
+│   ├── use-segment-control.ts
+│   └── index.ts
+
+components/
+├── segment-control/
+│   ├── __test__
+│   │   ├── segment-control.test.tsx   # 통합 테스트
+│   │   └── index.ts
+│   ├── segment-control.tsx
+│   └── index.ts
+```
+
+### 테스트 도구
+
+- **Vitest**: 테스트 러너
+- **@testing-library/react**: 컴포넌트 렌더링 및 상호작용
+- **@testing-library/jest-dom**: DOM 매처 (`toBeInTheDocument`, `toHaveAttribute` 등)
+
+```ts
+// 기본 import 패턴
+import { describe, it, expect, vi } from 'vitest'
+import { render, screen, fireEvent } from '@testing-library/react'
+
+// 훅 테스트 시 추가
+import { renderHook, act } from '@testing-library/react'
+```
+
+### 계층별 테스트 전략
+
+| 계층           | 테스트 범위                    | 파일 확장자 |
+| -------------- | ------------------------------ | ----------- |
+| **Primitives** | 렌더링, props, className, 속성 | `.test.tsx` |
+| **Headless**   | 상태 관리, 콜백, 사이드이펙트  | `.test.ts`  |
+| **Components** | 통합 동작, 사용자 상호작용     | `.test.tsx` |
+
+### Primitives 테스트 패턴
+
+Primitives는 **순수 UI**이므로 다음을 중점적으로 테스트합니다:
+
+```tsx
+describe('ButtonPrimitive', () => {
+  // 1. 렌더링 테스트
+  describe('렌더링', () => {
+    it('children을 렌더링한다', () => {})
+    it('data-slot 속성을 가진다', () => {})
+  })
+
+  // 2. Props 테스트
+  describe('variants', () => {
+    it('variant prop에 따라 data-variant 속성을 가진다', () => {})
+  })
+
+  // 3. className 전달 테스트
+  describe('className', () => {
+    it('추가 className을 적용한다', () => {})
+  })
+
+  // 4. 이벤트 전달 테스트
+  describe('이벤트', () => {
+    it('클릭 이벤트를 처리한다', () => {})
+  })
+})
+```
+
+### Headless 테스트 패턴
+
+Headless 훅은 **로직과 상태**를 중점적으로 테스트합니다:
+
+```ts
+describe('useSegmentControl', () => {
+  // 1. 상태 관리 테스트
+  describe('상태 관리', () => {
+    it('초기 상태에서 selectedValue는 undefined이다', () => {})
+    it('defaultValue로 초기 값을 설정할 수 있다', () => {})
+    it('value prop으로 제어된 상태를 사용할 수 있다', () => {})
+  })
+
+  // 2. 액션/메서드 테스트
+  describe('selectValue', () => {
+    it('비제어 모드에서 값을 선택할 수 있다', () => {})
+    it('onValueChange 콜백을 호출한다', () => {})
+  })
+
+  // 3. 사이드이펙트 테스트
+  describe('리사이즈 이벤트', () => {
+    it('resize 이벤트 리스너를 등록한다', () => {})
+    it('언마운트 시 resize 이벤트 리스너를 제거한다', () => {})
+  })
+})
+```
+
+### Components 테스트 패턴
+
+Components는 **Primitives + Headless 통합**을 테스트합니다:
+
+```tsx
+describe('SegmentControl', () => {
+  // 1. 렌더링 테스트
+  describe('렌더링', () => {
+    it('Root와 Item을 렌더링한다', () => {})
+    it('defaultValue에 해당하는 아이템이 선택된다', () => {})
+  })
+
+  // 2. 상호작용 테스트
+  describe('상호작용', () => {
+    it('아이템을 클릭하면 선택된다', () => {})
+    it('onValueChange 콜백을 호출한다', () => {})
+  })
+
+  // 3. 제어/비제어 모드 테스트
+  describe('제어 모드', () => {
+    it('value prop으로 선택 상태를 제어할 수 있다', () => {})
+  })
+
+  // 4. 접근성 테스트
+  describe('접근성', () => {
+    it('선택된 아이템은 aria-selected="true"를 가진다', () => {})
+  })
+
+  // 5. 에러 처리 테스트
+  describe('에러 처리', () => {
+    it('Root 없이 Item을 사용하면 에러가 발생한다', () => {})
+  })
+})
+```
+
+### 테스트 작성 규칙
+
+1. **한글 describe/it 사용**: 테스트 설명은 한글로 작성하여 가독성을 높입니다.
+2. **describe 그룹화**: 관련 테스트는 `describe` 블록으로 그룹화합니다.
+3. **단일 책임**: 각 `it` 블록은 하나의 동작만 테스트합니다.
+4. **ARIA/접근성 검증**: `role`, `aria-*` 속성을 적극 활용합니다.
+5. **data-\* 속성 검증**: `data-slot`, `data-state`, `data-variant`, `data-size` 등을 검증합니다.
+
+### 테스트 실행
+
+```bash
+# 전체 테스트 실행
+pnpm test
+
+# 특정 파일 테스트
+pnpm test button.test.tsx
+
+# watch 모드
+pnpm test --watch
+```
+
+---
+
+## 체크리스트
+
+새 컴포넌트 추가 시 확인:
+
+- [ ] 파편화가 필요한 컴포넌트인가?
+- [ ] UI와 로직이 분리되어 있는가?
+- [ ] Primitives는 스타일만 담당하는가?
+- [ ] Headless는 순수 로직만 담당하는가?
+- [ ] 서브 컴포넌트 네이밍이 일관성 있는가?
+- [ ] 사용자가 유연하게 조합할 수 있는가?
+- [ ] 각 계층별 테스트 코드가 작성되어 있는가?
+- [ ] 접근성 관련 테스트가 포함되어 있는가?
