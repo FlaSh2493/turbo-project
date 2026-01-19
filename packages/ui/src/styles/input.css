@@ -1,0 +1,83 @@
+/* Base Utilities */
+.input-root-base {
+  @apply relative inline-flex items-center w-full rounded-[5px] border transition-colors;
+}
+
+.input-field-base {
+  @apply flex-1 bg-transparent outline-none placeholder:transition-colors;
+}
+
+.input-clear-button-base {
+  @apply flex-shrink-0 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors cursor-pointer;
+}
+
+/* Size Utilities */
+.input-root-md {
+  @apply h-[44px] px-[14px] gap-[10px];
+}
+
+.input-root-sm {
+  @apply h-[34px] px-[10px] gap-[10px];
+}
+
+.input-field-md {
+  @apply text-[14px] leading-[24px];
+}
+
+.input-field-sm {
+  @apply text-[12px] leading-[16px];
+}
+
+.input-clear-button-md {
+  @apply w-[16px] h-[16px];
+}
+
+.input-clear-button-sm {
+  @apply w-[16px] h-[16px];
+}
+
+/* State Utilities - Root */
+.input-root-enabled {
+  @apply bg-gray-100 border-gray-200;
+}
+
+.input-root-fixed {
+  @apply bg-gray-0 border-gray-200;
+}
+
+.input-root-focused {
+  @apply bg-gray-0 border-gray-700;
+}
+
+.input-root-typing {
+  @apply bg-gray-0 border-gray-700;
+}
+
+.input-root-completed {
+  @apply bg-gray-100 border-gray-200;
+}
+
+.input-root-error {
+  @apply bg-gray-0 border-red;
+}
+
+.input-root-disabled {
+  @apply bg-gray-200 border-gray-200 cursor-not-allowed;
+}
+
+/* State Utilities - Field */
+.input-field-enabled {
+  @apply text-gray-700 placeholder:text-gray-400;
+}
+
+.input-field-fixed {
+  @apply text-gray-700 placeholder:text-gray-700 cursor-default;
+}
+
+.input-field-error {
+  @apply text-red placeholder:text-red;
+}
+
+.input-field-disabled {
+  @apply text-gray-300 placeholder:text-gray-300 cursor-not-allowed;
+}
