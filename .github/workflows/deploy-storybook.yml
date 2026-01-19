@@ -14,6 +14,9 @@ on:
   # Actions 탭에서 수동으로 실행 가능
   workflow_dispatch:
 
+env:
+  NODE_OPTIONS: '--max-old-space-size=4096'
+
 # GitHub Pages 배포를 위한 GITHUB_TOKEN 권한 설정
 permissions:
   contents: read
@@ -35,8 +38,6 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

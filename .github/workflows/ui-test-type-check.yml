@@ -1,0 +1,47 @@
+# PR 오픈 시 UI 패키지 테스트 실행
+name: UI Test & Type Check
+
+on:
+  # PR이 열리거나 업데이트될 때 실행
+  pull_request:
+    branches: ['main', 'develop', 'feature/**']
+    types: [opened, synchronize, reopened]
+
+  # Actions 탭에서 수동으로 실행 가능
+  workflow_dispatch:
+
+env:
+  NODE_OPTIONS: '--max-old-space-size=4096'
+
+# 동시 실행 관리 - 같은 PR의 이전 실행은 취소
+concurrency:
+  group: test-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build UI package
+        run: pnpm --filter @turbo-project/front-core-design build
+
+      - name: Run tests
+        run: pnpm --filter @turbo-project/front-core-design test:run
+
+      - name: Type check
+        run: pnpm check-types

@@ -1,0 +1,95 @@
+# # PR 오픈 시 Chromatic으로 Storybook 배포
+# name: Chromatic
+
+# on:
+#   # PR이 열리거나 업데이트될 때 실행
+#   pull_request:
+#     branches: ['main', 'develop', 'feature/**']
+#     types: [opened, synchronize, reopened]
+
+#   # Actions 탭에서 수동으로 실행 가능
+#   workflow_dispatch:
+
+# # 동시 실행 관리 - 같은 PR의 이전 실행은 취소
+# concurrency:
+#   group: chromatic-${{ github.head_ref || github.ref }}
+#   cancel-in-progress: true
+
+# env:
+#   NODE_OPTIONS: '--max-old-space-size=4096'
+
+# jobs:
+#   chromatic:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
+#         with:
+#           fetch-depth: 0
+
+#       - name: Setup pnpm
+#         uses: pnpm/action-setup@v4
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: '20'
+#           cache: 'pnpm'
+
+#       - name: Install dependencies
+#         run: pnpm install --frozen-lockfile
+
+#       - name: Build UI package
+#         run: pnpm --filter @turbo-project/front-core-design build
+
+#       - name: Publish to Chromatic
+#         id: chromatic
+#         uses: chromaui/action@latest
+#         with:
+#           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+#           workingDir: apps/storybook
+#           buildScriptName: build-storybook
+#           exitZeroOnChanges: true
+#           onlyChanged: true
+
+#       - name: Comment Storybook URL on PR
+#         if: github.event_name == 'pull_request'
+#         uses: actions/github-script@v7
+#         with:
+#           script: |
+#             const storybookUrl = '${{ steps.chromatic.outputs.storybookUrl }}';
+#             const buildUrl = '${{ steps.chromatic.outputs.buildUrl }}';
+
+#             const body = `## 📚 Storybook Preview
+
+#             | Resource | Link |
+#             |----------|------|
+#             | 🔗 Storybook | [View Storybook](${storybookUrl}) |
+#             | 🎨 Chromatic | [View Build](${buildUrl}) |
+#             `;
+
+#             const { data: comments } = await github.rest.issues.listComments({
+#               owner: context.repo.owner,
+#               repo: context.repo.repo,
+#               issue_number: context.issue.number,
+#             });
+
+#             const botComment = comments.find(comment =>
+#               comment.user.type === 'Bot' && comment.body.includes('📚 Storybook Preview')
+#             );
+
+#             if (botComment) {
+#               await github.rest.issues.updateComment({
+#                 owner: context.repo.owner,
+#                 repo: context.repo.repo,
+#                 comment_id: botComment.id,
+#                 body: body
+#               });
+#             } else {
+#               await github.rest.issues.createComment({
+#                 owner: context.repo.owner,
+#                 repo: context.repo.repo,
+#                 issue_number: context.issue.number,
+#                 body: body
+#               });
+#             }
