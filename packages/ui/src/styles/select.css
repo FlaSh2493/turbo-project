@@ -1,0 +1,71 @@
+/* Select Trigger */
+.select-trigger-base {
+  @apply flex w-full items-center justify-between rounded-[5px] border transition-colors outline-none;
+  @apply disabled:cursor-not-allowed;
+}
+
+.select-trigger-sm {
+  @apply h-[34px] px-[10px] text-[12px] leading-[16px];
+}
+
+.select-trigger-md {
+  @apply h-[44px] px-[14px] text-[14px] leading-[24px];
+}
+
+.select-trigger-enabled {
+  @apply bg-gray-100 border-gray-200 text-gray-700;
+}
+
+.select-trigger-open {
+  @apply bg-gray-0 border-gray-700 text-gray-700;
+}
+
+.select-trigger-completed {
+  @apply bg-gray-100 border-gray-200 text-gray-700;
+}
+
+.select-trigger-error {
+  @apply bg-gray-0 border-red text-red;
+}
+
+.select-trigger-disabled {
+  @apply bg-gray-200 border-gray-200 text-gray-300;
+}
+
+.select-trigger-readonly {
+  @apply bg-gray-0 border-gray-200 text-gray-700 cursor-default;
+}
+
+/* Select Content */
+.select-content-base {
+  @apply z-50 min-w-[8rem] overflow-hidden rounded-[5px] border border-gray-200 bg-gray-0 p-[10px] text-gray-700 shadow-1;
+  @apply animate-in fade-in-80;
+  @apply data-[state=open]:zoom-in-95;
+  @apply data-[side=bottom]:slide-in-from-top-2;
+  @apply data-[side=left]:slide-in-from-right-2;
+  @apply data-[side=right]:slide-in-from-left-2;
+  @apply data-[side=top]:slide-in-from-bottom-2;
+}
+
+/* Select Item */
+.select-item-base {
+  @apply relative flex flex-shrink-0 w-full cursor-pointer select-none items-center rounded-[3px] outline-none transition-colors;
+  @apply data-[disabled]:pointer-events-none data-[disabled]:opacity-50;
+  @apply data-[highlighted]:bg-gray-100;
+}
+
+.select-item-sm {
+  @apply h-[34px] px-[10px] text-[12px] leading-[16px];
+}
+
+.select-item-md {
+  @apply h-[44px] px-[10px] text-[14px] leading-[24px];
+}
+
+.select-item-selected {
+  @apply text-primary-300;
+}
+
+.select-item-unselected {
+  @apply text-gray-700;
+}
