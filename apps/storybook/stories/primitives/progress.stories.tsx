@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Progress } from '@turbo-project/front-core-design'
 import { useState, useEffect } from 'react'
+import { Progress } from '@turbo-project/front-core-design'
 
 const meta = {
   title: 'Primitives/Progress',

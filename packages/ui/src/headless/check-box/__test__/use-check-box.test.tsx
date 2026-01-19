@@ -79,6 +79,8 @@ describe('useCheckBox (Headless)', () => {
         value: ['opt1'],
         checkValue: vi.fn(),
         isChecked: (v: string) => v === 'opt1',
+        checkAll: vi.fn(),
+        getGroupState: vi.fn(() => ({ allChecked: false, isIndeterminate: true })),
       }
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -97,6 +99,8 @@ describe('useCheckBox (Headless)', () => {
         value: [],
         checkValue: vi.fn(),
         isChecked: () => false,
+        checkAll: vi.fn(),
+        getGroupState: vi.fn(() => ({ allChecked: false, isIndeterminate: false })),
       }
 
       const wrapper = ({ children }: { children: React.ReactNode }) => (
@@ -119,6 +123,8 @@ describe('useCheckBox (Headless)', () => {
         value: [],
         checkValue: vi.fn(),
         isChecked: () => false,
+        checkAll: vi.fn(),
+        getGroupState: vi.fn(() => ({ allChecked: false, isIndeterminate: false })),
       }
       const externalOnChange = vi.fn()
 
