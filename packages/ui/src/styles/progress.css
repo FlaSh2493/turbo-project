@@ -1,0 +1,58 @@
+/* Base Utilities */
+.progress-root-base {
+  @apply relative w-full overflow-hidden rounded-full bg-gray-200;
+}
+
+.progress-indicator-base {
+  @apply h-full rounded-full transition-all duration-300 ease-out;
+}
+
+.progress-value-base {
+  @apply absolute top-1/2 -translate-y-1/2 font-bold;
+}
+
+/* Size Utilities - Root */
+.progress-root-sm {
+  @apply h-[12px];
+}
+
+.progress-root-default {
+  @apply h-[20px];
+}
+
+.progress-root-lg {
+  @apply h-[28px];
+}
+
+/* Size Utilities - Indicator */
+.progress-indicator-sm {
+  @apply min-w-[12px];
+}
+
+.progress-indicator-default {
+  @apply min-w-[20px];
+}
+
+.progress-indicator-lg {
+  @apply min-w-[28px];
+}
+
+/* Size Utilities - Value */
+.progress-value-sm {
+  @apply text-[10px];
+}
+
+.progress-value-default {
+  @apply text-[12px];
+}
+
+.progress-value-lg {
+  @apply text-[14px];
+}
+
+/* Animation Utilities */
+.progress-shimmer {
+  background-size: 200% 100%;
+  background-image: linear-gradient(90deg, #eeeeee 0%, #f8f8f8 50%, #eeeeee 100%);
+  animation: progress-shimmer 1.5s ease-in-out infinite;
+}
