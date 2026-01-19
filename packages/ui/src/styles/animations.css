@@ -1,0 +1,99 @@
+/**
+ * XDS Animation System
+ * 커스텀 애니메이션 정의
+ */
+
+/* ========================================
+   * Progress Shimmer Animation
+   * 스켈레톤 로딩 효과용
+   * ======================================== */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+@keyframes progress-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@theme {
+  --ani-duration-100: 100ms;
+  --ani-duration-200: 200ms;
+  --ani-duration-300: 300ms;
+  --ani-duration-500: 500ms;
+  --ani-duration-700: 700ms;
+  --ani-duration-1000: 1000ms;
+  --ani-duration-3000: 3000ms;
+  --ani-duration-5000: 5000ms;
+}
+
+@utility animate-fade-in {
+  animation-name: fade-in;
+  animation-duration: var(--ani-duration, 300ms);
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  will-change: opacity;
+}
+
+@utility animate-fade-out {
+  animation-name: fade-out;
+  animation-duration: var(--ani-duration, 300ms);
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+  will-change: opacity;
+}
+
+@utility animate-duration-* {
+  animation-duration: var(--ani-duration-*);
+}
