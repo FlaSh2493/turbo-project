@@ -57,7 +57,7 @@ const ToastRoot = forwardRef<HTMLDivElement, ToastRootProps>(
     return (
       <div
         ref={ref}
-        data-slot="toast"
+        data-slot="toast-root"
         data-state={open ? 'open' : 'closed'}
         role="alert"
         aria-live="polite"
@@ -102,7 +102,7 @@ const ToastIcon = forwardRef<HTMLDivElement, ToastIconProps>(
     return (
       <div ref={ref} data-slot="toast-icon" className={cn('toast-icon-base', className)} {...props}>
         {type === 'success' && (
-          <div className="toast-icon-success">
+          <div className="toast-icon-success" data-slot="toast-icon-inner">
             <Check className="h-[10px] w-[10px] text-gray-0" strokeWidth={3} />
           </div>
         )}

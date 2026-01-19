@@ -59,8 +59,8 @@ export const Toaster = ({ offsetY = 40 }: ToasterProps) => {
   }
 
   return createPortal(
-    <ToastPrimitive.Viewport offsetY={offsetY}>
-      <SmoothList className="toast-list-base" duration={100}>
+    <ToastPrimitive.Viewport data-slot="toaster-viewport" offsetY={offsetY}>
+      <SmoothList data-slot="toaster-list" className="toast-list-base" duration={100}>
         {toasts.map(t => (
           <ToastPrimitive.Root
             key={t.id}
