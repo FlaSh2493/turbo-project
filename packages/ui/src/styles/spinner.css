@@ -1,0 +1,64 @@
+@keyframes spinner-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;
+  }
+}
+
+/* Base Utilities */
+.spinner-root-base {
+  @apply flex items-center justify-center bg-white/30 truncate select-none size-full;
+}
+
+.spinner-svg-base {
+  animation: spinner-rotate 1.4s linear infinite;
+}
+
+.spinner-track-base {
+  @apply stroke-[#eeeeee];
+}
+
+.spinner-indicator-base {
+  animation: spinner-dash 1.4s ease-in-out infinite;
+  stroke-linecap: round;
+  @apply stroke-[#999999];
+}
+
+/* Fullscreen Variants */
+.spinner-fullscreen-page {
+  @apply fixed z-[9999] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+.spinner-fullscreen-container {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+.spinner-fullscreen-static {
+  @apply static;
+}
+
+/* Dim Variants */
+.spinner-dim-white {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.spinner-dim-black {
+  background-color: rgba(0, 0, 0, 0.3);
+}
