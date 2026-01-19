@@ -9,12 +9,9 @@
   @apply bg-gray-800 border border-gray-200 rounded-[10px];
 }
 
-.toast-root-open {
-  @apply animate-fade-in animate-duration-500;
-}
-
-.toast-root-closed {
-  @apply animate-fade-out animate-duration-500;
+.toast-root-base {
+  @apply data-[state=open]:animate-fade-in data-[state=open]:animate-duration-500;
+  @apply data-[state=closed]:animate-fade-out data-[state=closed]:animate-duration-500;
 }
 
 /* Toast Content */
@@ -43,4 +40,9 @@
   @apply flex h-[30px] w-[30px] items-center justify-center;
   @apply text-gray-400 transition-colors hover:text-gray-300;
   @apply focus:outline-none;
+}
+
+/* Toast List */
+.toast-list-base {
+  @apply flex w-full flex-col items-center gap-[10px];
 }

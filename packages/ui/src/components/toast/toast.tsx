@@ -59,12 +59,8 @@ export const Toaster = ({ offsetY = 40 }: ToasterProps) => {
   }
 
   return createPortal(
-    <ToastPrimitive.Viewport data-slot="toaster-viewport" offsetY={offsetY}>
-      <SmoothList
-        data-slot="toaster-list"
-        className="flex w-full flex-col items-center gap-[10px]"
-        duration={100}
-      >
+    <ToastPrimitive.Viewport offsetY={offsetY}>
+      <SmoothList className="toast-list-base" duration={100}>
         {toasts.map(t => (
           <ToastPrimitive.Root
             key={t.id}
@@ -73,7 +69,6 @@ export const Toaster = ({ offsetY = 40 }: ToasterProps) => {
             data-layout-id={t.id}
           >
             <ToastPrimitive.Content>
-              <ToastPrimitive.Icon type="success" />
               <ToastPrimitive.Description>{t.message}</ToastPrimitive.Description>
             </ToastPrimitive.Content>
             {t.closable && <ToastPrimitive.Close onClick={() => dismiss(t.id)} />}
