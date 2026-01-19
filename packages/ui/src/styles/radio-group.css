@@ -1,0 +1,89 @@
+/* Radio Group Root */
+.radio-group-root {
+  @apply grid gap-2;
+}
+
+/* Radio Container (Label + Button Wrapper) */
+.radio-container-base {
+  @apply flex items-center gap-2;
+}
+
+.radio-container-squared {
+  @apply w-full flex-row-reverse justify-between px-[14px] py-[10px] rounded-[5px] border transition-colors;
+}
+
+.radio-container-squared-checked {
+  @apply border-primary-300;
+}
+
+.radio-container-squared-unchecked {
+  @apply bg-gray-0 border-gray-300;
+}
+
+.radio-container-squared-disabled {
+  @apply bg-gray-100 border-gray-400 cursor-not-allowed;
+}
+
+.radio-container-squared-checked-disabled {
+  @apply bg-gray-100 border-primary-300 cursor-not-allowed;
+}
+
+/* Radio Item (The actual circle) */
+.radio-item-base {
+  @apply size-4 shrink-0 rounded-full border transition-colors duration-200 focus:outline-none;
+}
+
+.radio-item-checked {
+  @apply bg-primary-300 border-primary-300;
+}
+
+.radio-item-unchecked {
+  @apply bg-white border-gray-500;
+}
+
+.radio-item-disabled {
+  @apply cursor-not-allowed;
+}
+
+.radio-item-unchecked-disabled {
+  @apply bg-gray-0 border-gray-400;
+}
+
+.radio-item-checked-disabled {
+  @apply bg-gray-400 border-gray-400;
+}
+
+/* Radio Indicator */
+.radio-indicator-base {
+  @apply flex items-center justify-center size-3.5;
+}
+
+/* Radio Dot */
+.radio-dot-base {
+  @apply h-1.5 w-1.5 rounded-full bg-white;
+}
+
+.radio-dot-disabled {
+  @apply bg-gray-200;
+}
+
+/* Radio Label */
+.radio-label-base {
+  @apply body2 truncate select-none transition-colors duration-200;
+}
+
+.radio-label-default-color {
+  @apply text-gray-700;
+}
+
+.radio-label-checked {
+  @apply text-primary-300;
+}
+
+.radio-label-disabled {
+  @apply cursor-not-allowed text-gray-400;
+}
+
+.radio-label-squared-checked-disabled {
+  @apply cursor-not-allowed text-primary-300;
+}
