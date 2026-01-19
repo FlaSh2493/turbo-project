@@ -1,0 +1,19 @@
+/* Round Badge Root */
+.badge-round-root {
+  @apply inline-flex items-center justify-center rounded-full bg-gray-100 px-2 gap-1.5;
+}
+
+/* Badge Dot */
+.badge-dot {
+  @apply size-2.5 rounded-full bg-current;
+}
+
+/* Badge Content */
+.badge-content {
+  @apply caption1 text-gray-700;
+}
+
+/* Square Badge Root */
+.badge-square-root {
+  @apply inline-flex items-center justify-center rounded-sm bg-gray-100 px-1 gap-1.5;
+}
