@@ -1,0 +1,68 @@
+/* Modal Overlay */
+.modal-overlay-base {
+  @apply fixed inset-0 z-50 bg-dimmed-black;
+  @apply animate-in fade-in-0;
+  @apply data-[state=closed]:animate-out data-[state=closed]:fade-out-0;
+}
+
+/* Modal Content */
+.modal-content-base {
+  @apply fixed left-1/2 top-1/2 z-50 flex -translate-x-1/2 -translate-y-1/2 flex-col rounded-[10px] bg-white shadow-1 outline-none;
+  @apply animate-in fade-in-0 zoom-in-95;
+  @apply data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95;
+}
+
+.modal-content-sm {
+  @apply w-[360px] max-h-[800px];
+}
+.modal-content-md {
+  @apply w-[640px] max-h-[800px];
+}
+.modal-content-lg {
+  @apply w-[840px] max-h-[800px];
+}
+.modal-content-xl {
+  @apply w-[1280px] max-h-[calc(100vh-120px)];
+}
+
+/* Modal Header */
+.modal-header-base {
+  @apply flex h-[98px] items-center px-[30px] py-[40px];
+}
+
+/* Modal Title */
+.modal-title-base {
+  @apply heading2 text-gray-700;
+}
+
+/* Modal Body */
+.modal-body-base {
+  @apply flex flex-col flex-1;
+}
+
+.modal-body-sm {
+  @apply min-h-[95px];
+}
+.modal-body-md {
+  @apply min-h-[124px];
+}
+.modal-body-lg {
+  @apply min-h-[518px];
+}
+.modal-body-xl {
+  @apply min-h-[738px];
+}
+
+.modal-body-viewport {
+  @apply h-full px-[30px] flex flex-col;
+}
+
+/* Modal Footer */
+.modal-footer-base {
+  @apply flex h-[104px] items-center justify-end gap-2.5 px-[30px] py-[30px];
+}
+
+/* Modal Close */
+.modal-close-base {
+  @apply cursor-pointer;
+}
