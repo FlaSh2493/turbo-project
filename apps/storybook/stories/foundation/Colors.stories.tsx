@@ -177,7 +177,7 @@ const ColorsPalette = () => {
         <div className="max-w-5xl mx-auto px-6 py-12">
           <h1 className="text-3xl sm:text-4xl font-bold text-slate-900">Colors</h1>
           <p className="mt-3 text-lg text-slate-600">
-            XDS 디자인 시스템의 컬러 팔레트입니다. 클릭하면 HEX 값이 복사됩니다.
+            DS 디자인 시스템의 컬러 팔레트입니다. 클릭하면 HEX 값이 복사됩니다.
           </p>
         </div>
       </div>
