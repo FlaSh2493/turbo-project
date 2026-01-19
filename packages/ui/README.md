@@ -1,6 +1,6 @@
 # @turbo-project/front-core-design
 
-XDS(Xpert Design System) - LEVER Xpert 브랜드 디자인 시스템 UI 라이브러리
+DS(Design System) - 디자인 시스템 UI 라이브러리
 
 ## 설치
 

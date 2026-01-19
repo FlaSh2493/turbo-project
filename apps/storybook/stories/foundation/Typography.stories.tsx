@@ -24,7 +24,7 @@ const TypographyPalette = () => {
   return (
     <div className="p-8 max-w-6xl mx-auto font-pretendard">
       <div className="mb-10">
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">XDS Typography</h1>
+        <h1 className="text-3xl font-bold text-gray-800 mb-2">DS Typography</h1>
         <p className="text-gray-500">전용 서체: Pretendard</p>
       </div>
 
