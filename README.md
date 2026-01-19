@@ -1,3 +1,3 @@
 # Trubo Project
 
-디자인 시스템.
+Design System
