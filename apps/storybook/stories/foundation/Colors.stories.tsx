@@ -255,6 +255,42 @@ const ColorsPalette = () => {
             </div>
           </div>
         </section>
+
+        {/* Shadows */}
+        <section>
+          <h2 className="text-sm font-semibold text-slate-900 mb-2">Shadows</h2>
+          <p className="text-sm text-slate-500 mb-6">깊이와 계층을 표현하는 그림자 스타일</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="p-6 rounded-lg border border-slate-200">
+              <div
+                className="w-full h-24 rounded-lg bg-white mb-4"
+                style={{ boxShadow: '0px 4px 30px 0px rgba(0, 0, 0, 0.1)' }}
+              />
+              <span className="text-xs font-semibold text-slate-900">shadow-1</span>
+              <span className="block text-[10px] text-slate-500 mt-1">
+                카드, 팝오버 등 기본 그림자
+              </span>
+              <span className="block text-[10px] font-mono text-slate-400 mt-1">
+                0px 4px 30px 0px rgba(0, 0, 0, 0.1)
+              </span>
+              <span className="block text-[10px] font-mono text-slate-400">var(--shadow-1)</span>
+            </div>
+            <div className="p-6 rounded-lg border border-slate-200">
+              <div
+                className="w-full h-24 rounded-lg bg-white mb-4"
+                style={{ boxShadow: '0px 1px 20px 0px rgba(0, 0, 0, 0.16)' }}
+              />
+              <span className="text-xs font-semibold text-slate-900">shadow-2</span>
+              <span className="block text-[10px] text-slate-500 mt-1">
+                모달, 드롭다운 등 강조 그림자
+              </span>
+              <span className="block text-[10px] font-mono text-slate-400 mt-1">
+                0px 1px 20px 0px rgba(0, 0, 0, 0.16)
+              </span>
+              <span className="block text-[10px] font-mono text-slate-400">var(--shadow-2)</span>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   )

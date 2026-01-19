@@ -32,32 +32,60 @@ const TypographyPalette = () => {
         <h2 className="text-xl font-bold text-gray-800 border-b-2 border-gray-800 pb-2">
           Headings
         </h2>
-        <TypographyItem name="Heading 0" className="heading0" description="36px / Bold / 1.44" />
-        <TypographyItem name="Heading 1" className="heading1" description="24px / Bold / 1.5" />
-        <TypographyItem name="Heading 2" className="heading2" description="20px / Bold / 1.4" />
+        <TypographyItem
+          name="Heading 0"
+          className="heading0"
+          description="36px / Bold / 52px (1.44)"
+        />
+        <TypographyItem
+          name="Heading 1"
+          className="heading1"
+          description="24px / Bold / 36px (1.5)"
+        />
+        <TypographyItem
+          name="Heading 2"
+          className="heading2"
+          description="20px / Bold / 28px (1.4)"
+        />
       </div>
 
       <div className="flex flex-col gap-2 mb-8">
         <h2 className="text-xl font-bold text-gray-800 border-b-2 border-gray-800 pb-2">Titles</h2>
-        <TypographyItem name="Title 1" className="title1" description="18px / Bold / 1.44" />
-        <TypographyItem name="Title 2" className="title2" description="16px / Bold / 1.625" />
-        <TypographyItem name="Title 3" className="title3" description="14px / Bold / 1.71" />
-        <TypographyItem name="Title 4" className="title4" description="12px / Bold / 1.33" />
+        <TypographyItem name="Title 1" className="title1" description="18px / Bold / 26px (1.44)" />
+        <TypographyItem
+          name="Title 2"
+          className="title2"
+          description="16px / Bold / 26px (1.625)"
+        />
+        <TypographyItem name="Title 3" className="title3" description="14px / Bold / 24px (1.71)" />
+        <TypographyItem name="Title 4" className="title4" description="12px / Bold / 16px (1.33)" />
       </div>
 
       <div className="flex flex-col gap-2 mb-8">
         <h2 className="text-xl font-bold text-gray-800 border-b-2 border-gray-800 pb-2">Bodies</h2>
-        <TypographyItem name="Body 1" className="body1" description="16px / Medium / 1.625" />
-        <TypographyItem name="Body 2" className="body2" description="14px / Medium / 1.71" />
-        <TypographyItem name="Body 3" className="body3" description="12px / Medium / 1.33" />
+        <TypographyItem
+          name="Body 1"
+          className="body1"
+          description="16px / Medium / 26px (1.625)"
+        />
+        <TypographyItem name="Body 2" className="body2" description="14px / Medium / 24px (1.71)" />
+        <TypographyItem name="Body 3" className="body3" description="12px / Medium / 16px (1.33)" />
       </div>
 
       <div className="flex flex-col gap-2 mb-8">
         <h2 className="text-xl font-bold text-gray-800 border-b-2 border-gray-800 pb-2">
           Captions
         </h2>
-        <TypographyItem name="Caption 1" className="caption1" description="12px / Medium / 1.33" />
-        <TypographyItem name="Caption 2" className="caption2" description="10px / Bold / 1.6" />
+        <TypographyItem
+          name="Caption 1"
+          className="caption1"
+          description="12px / Medium / 16px (1.33)"
+        />
+        <TypographyItem
+          name="Caption 2"
+          className="caption2"
+          description="10px / Bold / 16px (1.6)"
+        />
       </div>
     </div>
   )
