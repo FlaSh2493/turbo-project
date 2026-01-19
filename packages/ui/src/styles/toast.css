@@ -1,0 +1,46 @@
+/* Toast Viewport */
+.toast-viewport-base {
+  @apply fixed left-1/2 z-[100] -translate-x-1/2 flex flex-col items-center gap-[10px];
+}
+
+/* Toast Root */
+.toast-root-base {
+  @apply flex items-center justify-center;
+  @apply bg-gray-800 border border-gray-200 rounded-[10px];
+}
+
+.toast-root-open {
+  @apply animate-fade-in animate-duration-500;
+}
+
+.toast-root-closed {
+  @apply animate-fade-out animate-duration-500;
+}
+
+/* Toast Content */
+.toast-content-base {
+  @apply flex items-center gap-[10px] py-[13px] pl-[20px] pr-[10px];
+}
+
+/* Toast Icon */
+.toast-icon-base {
+  @apply flex h-[24px] w-[24px] items-center justify-center;
+}
+
+.toast-icon-success {
+  @apply flex h-[16px] w-[16px] items-center justify-center rounded-full bg-green;
+}
+
+/* Toast Description */
+.toast-description-base {
+  @apply min-w-[140px] max-w-[330px] text-[14px] font-normal leading-[24px] text-gray-0;
+  @apply whitespace-pre-wrap;
+  @apply line-clamp-2;
+}
+
+/* Toast Close */
+.toast-close-base {
+  @apply flex h-[30px] w-[30px] items-center justify-center;
+  @apply text-gray-400 transition-colors hover:text-gray-300;
+  @apply focus:outline-none;
+}
